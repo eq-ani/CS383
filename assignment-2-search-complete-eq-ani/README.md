@@ -303,19 +303,50 @@ Did you use 383GPT at all for this assignment (yes/no)?
 Yes. 
 
 ## `build_tree`
+(root)
+   │
+   ├── t
+   │   ├── h
+   │   │   ├── e
+   │   │   │   ├── (word: "the")
+   │   │   │   ├── e
+   │   │   │   │   ├── (word: "thee")
+   │   │   │   ├── r
+   │   │   │   │   ├── e
+   │   │   │   │   │   ├── (word: "there")
+   │   │   │   │   ├── i
+   │   │   │   │   │   ├── r
+   │   │   │   │   │   │   ├── (word: "their")
+   │   │   ├── o
+   │   │   │   ├── u
+   │   │   │   │   ├── (word: "thou")
+   │   │   │   │   ├── g
+   │   │   │   │   │   ├── h
+   │   │   │   │   │   │   ├── (word: "though")
+   │   │   │   │   │   │   ├── t
+   │   │   │   │   │   │       ├── (word: "thought")
+   │   │   │   │   │   │
+   │   │   ├── r
+   │   │   │   ├── o
+   │   │   │   │   ├── u
+   │   │   │   │   │   ├── g
+   │   │   │   │   │   │   ├── h
+   │   │   │   │   │   │   │   ├── (word: "through")
+   │   │   ├── a
+   │   │   │   ├── h
+   │   │   │   │   ├── g
+   │   │   │   │   │   ├── (word: "thag")
+   │   │   │   │   ├── t
+   │   │   │   │   │   ├── (word: "that")
 
 ### Tree diagram
 
+ROOT
 ### Code analysis
 
 The function build_tree builds a prefix tree from the given document. Each character is a node, with the
 ending of each word being a leaf. When a word is completed, is_word is set to True. Character
 frequencies are used for UCS. 
-
-### Your output
-
-- Put the output you got for the prefixes provided here
-
 
 ## `BFS`
 
