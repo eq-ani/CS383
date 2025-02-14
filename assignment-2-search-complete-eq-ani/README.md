@@ -303,45 +303,29 @@ Did you use 383GPT at all for this assignment (yes/no)?
 Yes. 
 
 ## `build_tree`
-(root)
-   │
-   ├── t
-   │   ├── h
-   │   │   ├── e
-   │   │   │   ├── (word: "the")
-   │   │   │   ├── e
-   │   │   │   │   ├── (word: "thee")
-   │   │   │   ├── r
-   │   │   │   │   ├── e
-   │   │   │   │   │   ├── (word: "there")
-   │   │   │   │   ├── i
-   │   │   │   │   │   ├── r
-   │   │   │   │   │   │   ├── (word: "their")
-   │   │   ├── o
-   │   │   │   ├── u
-   │   │   │   │   ├── (word: "thou")
-   │   │   │   │   ├── g
-   │   │   │   │   │   ├── h
-   │   │   │   │   │   │   ├── (word: "though")
-   │   │   │   │   │   │   ├── t
-   │   │   │   │   │   │       ├── (word: "thought")
-   │   │   │   │   │   │
-   │   │   ├── r
-   │   │   │   ├── o
-   │   │   │   │   ├── u
-   │   │   │   │   │   ├── g
-   │   │   │   │   │   │   ├── h
-   │   │   │   │   │   │   │   ├── (word: "through")
-   │   │   ├── a
-   │   │   │   ├── h
-   │   │   │   │   ├── g
-   │   │   │   │   │   ├── (word: "thag")
-   │   │   │   │   ├── t
-   │   │   │   │   │   ├── (word: "that")
 
 ### Tree diagram
-
-ROOT
+    └── t
+        └── h
+        │   ├── e (word: the)
+            │   ├── r
+                    └── e (word: there)
+            │   ├── i
+                    └── r (word: their)
+                └── e (word: thee)
+        │   ├── o
+                └── u (word: thou)
+                    └── g
+                        └── h (word: though)
+                            └── t (word: thought)
+        │   ├── a
+            │   ├── t (word: that)
+                └── g (word: thag)
+            └── r
+                └── o
+                    └── u
+                        └── g
+                            └── h (word: through)
 ### Code analysis
 
 The function build_tree builds a prefix tree from the given document. Each character is a node, with the
@@ -352,44 +336,44 @@ frequencies are used for UCS.
 
 ### Code analysis
 
-BFS uses a queue in order to explore nodes at the current depth before continuing. The words are processed based
-on insertion order and the function returns the words that are the shortest length from the original prefix. 
+BFS explores the tree level by level, ensuring shorter words appear first. It uses a queue to 
+traverse nodes and returns all words matching the prefix.
 
 ### Your output
 
-- Put the output you got for the prefixes provided here
-
+the, thee, thou, that, thag, there, their, though, thought, through
 
 ## `DFS`
 
 ### Code analysis
 
-- Put the intuition of your code here
+DFS explores deep paths first, using a stack to traverse nodes. It returns words in preorder 
+traversal order, prioritizing depth over breadth.
 
 ### Your output
 
-- Put the output you got for the prefixes provided here
+thag, that, the, thee, their, there, thou, though, thought, through
 
 ### Recursive DFS vs Stack-based DFS
-- Explain your intuition in recursive DFS VS stack-based DFS, and which one you used here.
 
+Stack-based DFS was used to avoid recursion depth limits and control traversal order. Recursive
+DFS would have been simpler but risked stack overflow.
 
 ## `UCS`
 
 ### Code analysis
 
-- Put the intuition of your code here
+UCS uses a priority queue to prioritize paths with the lowest accumulated cost. Frequent 
+character transitions have lower costs and appear earlier.
 
 ### Your output
 
-- Put the output you got for the prefixes provided here
-
-
+the, thou, thee, thag, that, though, their, there, thought, through
 
 ## Experimental
 - Explain here what differences did you see in the suggestions generated when you used BFS vs DFS vs UCS. 
 
-
+The experimental results highlight the differences between BFS, DFS, and UCS in retrieving autocomplete suggestions. BFS prioritized shorter words first, making it ideal for quick and concise predictions, as seen when "the" appeared before "though". DFS, in contrast, retrieved deeper words first, leading to "thag" appearing before "the", which can be less intuitive for autocomplete. UCS ranked words based on transition frequency, explaining why "thou" appeared before "that", as "o" was a more common transition than "a". These findings show that BFS is best for general autocomplete, DFS may be useful for deeper word exploration, and UCS provides results based on common usage patterns.
 
 
 
