@@ -300,14 +300,17 @@ def fizzbuzz(n):
 ## 383GPT
 Did you use 383GPT at all for this assignment (yes/no)?
 
+Yes. 
+
 ## `build_tree`
 
 ### Tree diagram
-- Put the tree diagram for `test.txt` here
 
 ### Code analysis
 
-- Put the intuition of your code here
+The function build_tree builds a prefix tree from the given document. Each character is a node, with the
+ending of each word being a leaf. When a word is completed, is_word is set to True. Character
+frequencies are used for UCS. 
 
 ### Your output
 
@@ -318,7 +321,8 @@ Did you use 383GPT at all for this assignment (yes/no)?
 
 ### Code analysis
 
-- Put the intuition of your code here
+BFS uses a queue in order to explore nodes at the current depth before continuing. The words are processed based
+on insertion order and the function returns the words that are the shortest length from the original prefix. 
 
 ### Your output
 
